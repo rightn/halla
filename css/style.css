@@ -1,5 +1,5 @@
 @charset 'utf-8';
-
+@import url('nanumgothic/nanumgothic.css');
 
 * {
     margin: 0;
@@ -48,7 +48,7 @@ html {
 }
 
 body {
-    font-family: Verdana, Dotum, AppleGothic, sans-serif, 'Nanum Gothic';
+    font-family: 'Nanum Gothic', Verdana, Dotum, AppleGothic, sans-serif;
     font-size: 0.75em;
     line-height: 1;
     color: #353535;
@@ -58,10 +58,7 @@ body {
     position: relative;
     display: block;
     width: 100%;
-}
-
-.header .container {
-    height: 172px;
+    z-index: 999;
 }
 
 .header-top {
@@ -71,7 +68,7 @@ body {
 }
 
 .header-top .container {
-    height: 33px;
+    height: 31px;
 }
 
 .flag {
@@ -103,14 +100,13 @@ body {
 }
 
 .header-main .container {
-    height: 68px;
+    height: 123px;
 }
 
 .h-left {
     position: relative;
     display: block;
-    margin-top: 66px;
-    margin-bottom: 44px;
+    padding-top: 55px;
     overflow: hidden;
 }
 
@@ -173,7 +169,8 @@ body {
 
 .logo {
     position: absolute;
-    top: 0%;
+    top: 50%;
+    transform: translateX(-50%);
     left: 40%;
     width: 228px;
     height: 55px;
@@ -187,41 +184,57 @@ body {
 .logo-right {
     position: absolute;
     display: block;
-    right: 0;
-    top: 0;
-    transform: translateY(-50%);
-    float: right;
+    top: 15px;
+    /* transform: translateY(-50%); */
+    right: 0;    
 }
 
 .logo-right a {
     position: relative;
     display: block;
-    height: 119px;
-    width: 100px;
-    background: url('../images/banner_t_sub.png')no-repeat center;
-    background-size: cover;
+    width: 119px;
+    height: 100px;
+    background: url('../images/banner_t_sub.png') no-repeat center;
+    background-size: contain;
     font-size: 0;
 }
 
-.nav {
-    position: relative;
-    display: block;
-    float: left;
-    overflow: hidden;
-    height: 47px;
-    margin-top: 20px;
-}
 
 .header-bottom {
-    position: relative;
+    position: absolute;
+    left: 0;
+    top: 154px;
     display: block;
+    width: 100%;
+    height: 49px;
+    overflow: hidden;
+    background-color: #fff;
 
+    transition: height 0.3s;
+}
+.header-bottom::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 49px;
+    background: url('../images/bg_gnb.png') repeat-x;    
+}
+.header-bottom-active {
+    height: 260px;
 }
 
 .header-bottom .container {
     height: 49px;
 }
 
+.nav {
+    position: relative;
+    display: block;
+    height: 49px;
+}
 .gnb-bottom {
     position: relative;
     display: block;
@@ -232,17 +245,62 @@ body {
 .gnb-bottom>li {
     position: relative;
     display: block;
-    margin: 0 76px;
+    padding: 0 76px;
     float: left;
 }
 
+
+.gnb-bottom>li:last-child {
+    padding-right: 0;
+}
 .gnb-bottom>li>a {
     position: relative;
-    display: block;
+    display: inline-block;
     color: #313131;
     font-size: 16px;
     font-weight: 600;
-    line-height: 47px;
+    line-height: 49px;
+}
+
+.gnb-bottom>li>a:hover {
+    color: #df2028;
+}
+
+.gnb-bottom>li>a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #df2028;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.gnb-bottom>li:hover>a::after {
+    opacity: 1;
+}
+
+.h-deep {
+    position: relative;
+    display: block;
+    padding: 30px 0;
+}
+.h-deep li {
+
+}
+.h-deep li a {
+    position: relative;
+    display: block;
+    color: #4c4c4c;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 34px;
+}
+.h-deep li a:hover {
+    color: #df2028;
 }
 
 /* 비주얼슬라이드 */
@@ -302,11 +360,14 @@ body {
     background-size: cover;
     border: 0;
     z-index: 99;
+    cursor: pointer;
 }
 
 .swiper-pagination>.swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
+    background-color: #434343;
+    opacity: 0.7;
 }
 
 .swiper-pagination>.swiper-pagination-bullet-active {
@@ -324,6 +385,7 @@ body {
     background-size: cover;
     border: 0;
     z-index: 99;
+    cursor: pointer;
 }
 
 .sincerity {
@@ -458,14 +520,15 @@ body {
 
 .tv .container {
     height: 502px;
-    padding-left: 70px;
+    /* padding-left: 70px;
     padding-right: 80px;
-    width: 100%;
+    width: 100%; */
 }
 
 .tv-left {
-    width: 50%;
-    margin-left: 160px;
+    position: relative;
+    display: block;
+    float: left;
 }
 
 .tv-left a {
@@ -488,16 +551,17 @@ body {
 .tv-right {
     position: relative;
     display: block;
-
+    float: right;
+    height: 100%;
 }
 
 .tv-right a {
     position: absolute;
+    right: 0;
+    bottom: 0;
     display: block;
     width: 320px;
     height: 440px;
-    right: 0;
-    bottom: -68px;
     background: url('../images/img_sec02_2.png')no-repeat center;
     background-size: cover;
 
@@ -825,8 +889,6 @@ body {
     font-size: 14px;
     font-weight: 600;
     color: #494949;
-
-
 }
 
 .footer {
@@ -854,25 +916,39 @@ body {
 }
 
 .f-menu li {
-
+    position: relative;
+    display: block;
     float: left;
+    padding: 0 10px;
+}
+.f-menu li:first-child {
+    padding-left: 0;
+}
+.f-menu li:last-child {
+    padding-right: 0;
+}
+
+.f-menu li::after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    right: 0;
+    width: 1px;
+    height: 10px;
+    background: url('../images/bar_tail.png') no-repeat center;
+}
+.f-menu li:last-child::after {
+    content: none;
 }
 
 .f-menu li a {
     position: relative;
-    display: inline-block;
+    display: block;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 400;
     color: #fff;
 }
 
-.f-menu li a::after {
-    content: '';
-    padding: 0 22px 0;
-    width: 1px;
-    height: 3px;
-    background: url('../images/bar_tail.png') no-repeat center;
-}
 
 .f-menu li:last-child a::after {
     content: none;
@@ -913,12 +989,12 @@ body {
 
 .f-right {
     position: absolute;
-    bottom:25%;
-    right:0;
+    bottom: 25%;
+    right: 0;
     display: block;
     float: right;
     width: 48%;
-    
+
 }
 
 .f-right ul {
@@ -933,7 +1009,7 @@ body {
     height: 30px;
     font-size: 0;
     margin-left: 10px;
-   cursor: pointer;
+    cursor: pointer;
 }
 
 .f-right ul li:nth-child(1) {
