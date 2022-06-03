@@ -1,12 +1,17 @@
 $(document).ready(function () {
-    
+    // 모달창
+    let modal_close = $('.modal-close');
+    let modal = $('.modal');
+    modal_close.click(function () {
+        modal.hide();
+    });
     let headerBottom = $('.header-bottom');
     let gnbBottomLiA = $('.gnb-bottom>li');
-    $.each(gnbBottomLiA, function(index, item){
-        $(this).mouseenter(function(){
+    $.each(gnbBottomLiA, function (index, item) {
+        $(this).mouseenter(function () {
             headerBottom.addClass('header-bottom-active');
         });
-        $(this).mouseleave(function(){
+        $(this).mouseleave(function () {
             headerBottom.removeClass('header-bottom-active');
         });
     })
